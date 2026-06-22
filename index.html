@@ -711,11 +711,7 @@ h1,h2,h3,.serif{font-family:var(--font-display);font-weight:500;line-height:1.05
   /* Lenis */
   let lenis;
   if(window.Lenis){
-    lenis = new Lenis({
-      duration:1.2,
-      easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)),
-      smoothWheel:true
-    });
+    lenis = new Lenis({lerp:0.2, wheelMultiplier:1, smoothWheel:true, syncTouch:false});
     window.__lenis = lenis;
     lenis.on('scroll',ScrollTrigger.update);
     gsap.ticker.add(time=>lenis.raf(time*1000));
